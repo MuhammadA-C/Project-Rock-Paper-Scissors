@@ -1,56 +1,72 @@
 "use strict";
 
 let computerSelection; 
-let numofRounds = 5;
-let playerSelection;
-let isPlayerSelectionValid;
+const numOfRounds = 5;
 
 computerSelection = getComputerChoice();
-playerSelection = getPlayerSelection();
-isPlayerSelectionValid = PlayerSelectionValid();
-game(numofRounds, computerSelection, isPlayerSelectionValid);
+game(numOfRounds, computerSelection);
 
 
 
+function game(numOfRounds, computerSelection){
+    let ties = 0;
+    let wins = 0;
+    let loses = 0;
 
-function game(numofRounds, computerSelection, isPlayerSelectionValid){
-    for (let i = 0; i < numofRounds; i++){
+    for(let i = 0; i < numOfRounds; i++){
+        let playerSelection = getPlayerSelection();
         let result = playRound(computerSelection, playerSelection);
 
-        if (isPlayerSelectionValid === false){
-            errorMessageInvalidInput();
+        console.log(result); //prints out the results for each round
+
+        if (result === "You Lose! Rock beats Scissors." || result === "You Lose! Scissors beats Paper." || result === "You Lose! Paper beats Rock."){
+            loses++;
         }
-        else if (result === "You Win!"){
-            console.log(result + " " + playerSelection + " beats " + computerSelection);
-        } 
-        else if (result === "You Lose!"){
-            console.log(result + " " + computerSelection + " beats " + playerSelection);
+        else if (result === "You Win! Rock beats Paper." || result === "You Win! Scissors beats Paper." || result === "You Win! Paper beats Rock."){
+            wins++;
         }
         else {
-            console.log(result);
+            ties++;
         }
     }
+
+    whoWonTheGame(wins, loses);   
 }
+
 //Plays a single round of Rock, Paper, Scissors
-function playRound(computerSelection, playerSelection, isPlayerSelectionValid){
+function playRound(computerSelection, playerSelection){
     let computer = computerSelection.toLowerCase();
     let player = playerSelection;
-    let result;
+    let result = "You Tied with the computer!";
 
-    if (isPlayerSelectionValid === false){
-        errorMessageInvalidInput();
+    if (computer === "rock" && player === "scissors"){
+        result = "You Lose! Rock beats Scissors.";
+        return result;
+    } 
+    else if (computer === "scissors" && player === "paper"){
+        result =  "You Lose! Scissors beats Paper.";
+        return result;
     }
-    else if (computer == player){
-        result = "You Tied!";
-    } 
-    else if (computer == "rock" && player == "scissors" || computer == "scissors" && player == "paper" || computer == "paper" && player == "rock"){
-        result = "You Lose!";
-    } 
+    else if (computer === "paper" && player === "rock"){
+        result = "You Lose! Paper beats Rock.";
+        return result;
+    }
+    else if (player === "rock" && computer === "scissors"){
+        result =  "You Win! Rock beats Paper.";
+        return result;
+    }
+    else if (player === "scissors" && computer === "paper"){
+        result = "You Win! Scissors beats Paper.";
+        return result;
+    }
+    else if (player === "paper" && computer === "rock"){
+        result = "You Win! Paper beats Rock.";
+        return result;
+    }
     else {
-        result = "You Win!";
+        return result;
     }
 
-    return result;
 }
 //Gets computers choice
 function getComputerChoice(){
@@ -94,16 +110,15 @@ function getPlayerSelection(){
 
     return playerSelection;
 }
-//Checks to see if player selection is valid
-function PlayerSelectionValid(playerSelection){
-    let isInputCorrect = true;
-
-    if (playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors"){
-        isInputCorrect = false;
+//Checks to see who won
+function whoWonTheGame(wins, loses){
+    if (wins > loses){
+        console.log("You Win!");
+    }
+    else if (wins < loses){
+        console.log("You Lose!");
     } 
-    return isInputCorrect;
-}
-//Displays error message for invalid input on the console
-function errorMessageInvalidInput(){
-    console.log("Error! You typed in: " + playerSelection + ", that's incorrect.");
+    else {
+        console.log("You Tied!");
+    }
 }
