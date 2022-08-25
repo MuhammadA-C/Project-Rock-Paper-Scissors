@@ -1,5 +1,17 @@
 "use strict";
 
+/*
+    This is the first version of the "Rock Paper Scissors Project" from The Odin Project Foundations course.
+
+    Important to note: 
+    
+        1. I didn't take into account the edge case where the game needs to call for a tie breaker because
+           The player won 2, tied 2, and lost 1 or lose 2, tied 2, and won 1.
+           
+        2. There's no input validation. So, the user could spell the wrong word and it'd result in a "tie",
+           due to me putting the tie outcome as the else clause. 
+*/
+
 let computerSelection; 
 const numOfRounds = 5;
 
@@ -32,7 +44,6 @@ function game(numOfRounds, computerSelection){
 
     whoWonTheGame(wins, loses);   
 }
-
 //Plays a single round of Rock, Paper, Scissors
 function playRound(computerSelection, playerSelection){
     let computer = computerSelection.toLowerCase();
