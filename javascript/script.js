@@ -1,7 +1,12 @@
 "use strict";
 
+let computerSelection; 
+let playerSelection;
+let getPlayerSelection;
 
-let computerChoice = getComputerChoice();
+computerSelection = getComputerChoice();
+getPlayerSelection = prompt("Enter Rock, Paper, or Scissors to play!");
+playerSelection = getPlayerSelection.toLowerCase();
 
 
 
