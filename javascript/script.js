@@ -8,7 +8,7 @@ let result;
 computerSelection = getComputerChoice();
 getPlayerSelection = prompt("Enter Rock, Paper, or Scissors to play!");
 playerSelection = getPlayerSelection.toLowerCase();
-result = playRockPaperScissors(computerSelection, playerSelection);
+result = playRound(computerSelection, playerSelection);
 
 if (result === "You Lose!"){
     console.log(result + " " + computerSelection + " beats " + playerSelection);
@@ -23,7 +23,7 @@ else if (result === "You Win!"){
 
 
 
-function playRockPaperScissors(computerSelection, playerSelection){
+function playRound(computerSelection, playerSelection){
     let computer = computerSelection.toLowerCase();
     let player = playerSelection;
     let result;
