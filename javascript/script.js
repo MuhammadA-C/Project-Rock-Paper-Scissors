@@ -2,38 +2,45 @@
 
 let computerSelection; 
 let playerSelection;
-let getPlayerSelection;
-let result;
+let numofRounds = 5;
+let isPlayerSelectionValid;
 
 computerSelection = getComputerChoice();
-getPlayerSelection = prompt("Enter Rock, Paper, or Scissors to play!");
-playerSelection = getPlayerSelection.toLowerCase();
-result = playRound(computerSelection, playerSelection);
+playerSelection = getPlayerSelection();
+isPlayerSelectionValid = PlayerSelectionValid();
 
-if (result === "You Lose!"){
-    console.log(result + " " + computerSelection + " beats " + playerSelection);
+//game(numofRounds, computerSelection, playerSelection);
+
+let result = playRound(computerSelection, playerSelection);
+
+if (isPlayerSelectionValid === false){
+    console.log("Error! You typed in: " + playerSelection + ", that's incorrect.");
 }
 else if (result === "You Win!"){
     console.log(result + " " + playerSelection + " beats " + computerSelection);
-} else {
+} 
+else if (result === "You Lose!"){
+    console.log(result + " " + computerSelection + " beats " + playerSelection);
+}
+else {
     console.log(result);
 }
 
 
 
-
-
+//Plays a single round of Rock, Paper, Scissors
 function playRound(computerSelection, playerSelection){
     let computer = computerSelection.toLowerCase();
     let player = playerSelection;
     let result;
 
-    if (computer === player){
+    if (computer == player){
         result = "You Tied!";
     } 
-    else if (computer === "rock" && player === "scissors" || computer === "scissors" && player === "paper" || computer === "paper" && player === "rock"){
+    else if (computer == "rock" && player == "scissors" || computer == "scissors" && player == "paper" || computer == "paper" && player == "rock"){
         result = "You Lose!";
-    } else {
+    } 
+    else {
         result = "You Win!";
     }
 
@@ -71,4 +78,22 @@ function getRockPaperScissors(num){
 
     return result;
 }
+//Prompts player for input
+function getPlayerSelection(){
+    let getPlayerSelection;
+    let playerSelection;
 
+    getPlayerSelection = prompt("Enter Rock, Paper, or Scissors to play!");
+    playerSelection = getPlayerSelection.toLowerCase(); 
+
+    return playerSelection;
+}
+//Checks to see if player selection is valid
+function PlayerSelectionValid(playerSelection){
+    let isInputCorrect = true;
+
+    if (playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors"){
+        isInputCorrect = false;
+    } 
+    return isInputCorrect;
+}
