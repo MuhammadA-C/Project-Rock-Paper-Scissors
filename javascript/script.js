@@ -1,40 +1,46 @@
 "use strict";
 
 let computerSelection; 
-let playerSelection;
 let numofRounds = 5;
+let playerSelection;
 let isPlayerSelectionValid;
 
 computerSelection = getComputerChoice();
 playerSelection = getPlayerSelection();
 isPlayerSelectionValid = PlayerSelectionValid();
+game(numofRounds, computerSelection, isPlayerSelectionValid);
 
-//game(numofRounds, computerSelection, playerSelection);
 
-let result = playRound(computerSelection, playerSelection);
 
-if (isPlayerSelectionValid === false){
-    console.log("Error! You typed in: " + playerSelection + ", that's incorrect.");
+
+function game(numofRounds, computerSelection, isPlayerSelectionValid){
+    for (let i = 0; i < numofRounds; i++){
+        let result = playRound(computerSelection, playerSelection);
+
+        if (isPlayerSelectionValid === false){
+            errorMessageInvalidInput();
+        }
+        else if (result === "You Win!"){
+            console.log(result + " " + playerSelection + " beats " + computerSelection);
+        } 
+        else if (result === "You Lose!"){
+            console.log(result + " " + computerSelection + " beats " + playerSelection);
+        }
+        else {
+            console.log(result);
+        }
+    }
 }
-else if (result === "You Win!"){
-    console.log(result + " " + playerSelection + " beats " + computerSelection);
-} 
-else if (result === "You Lose!"){
-    console.log(result + " " + computerSelection + " beats " + playerSelection);
-}
-else {
-    console.log(result);
-}
-
-
-
 //Plays a single round of Rock, Paper, Scissors
-function playRound(computerSelection, playerSelection){
+function playRound(computerSelection, playerSelection, isPlayerSelectionValid){
     let computer = computerSelection.toLowerCase();
     let player = playerSelection;
     let result;
 
-    if (computer == player){
+    if (isPlayerSelectionValid === false){
+        errorMessageInvalidInput();
+    }
+    else if (computer == player){
         result = "You Tied!";
     } 
     else if (computer == "rock" && player == "scissors" || computer == "scissors" && player == "paper" || computer == "paper" && player == "rock"){
@@ -96,4 +102,8 @@ function PlayerSelectionValid(playerSelection){
         isInputCorrect = false;
     } 
     return isInputCorrect;
+}
+//Displays error message for invalid input on the console
+function errorMessageInvalidInput(){
+    console.log("Error! You typed in: " + playerSelection + ", that's incorrect.");
 }
