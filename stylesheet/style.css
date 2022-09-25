@@ -1,0 +1,61 @@
+#container-1{
+    display: flex;
+}
+
+#top-ui{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex: 1 1 0;
+    top: 43px;   
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    color: #FFFFFF;
+}
+
+#background{
+    position: absolute;
+    width: 1728px;
+    height: 1117px; 
+    background: #080317;
+}
+
+#board{
+    position: absolute;
+    width: 1641px;
+    height: 1011px;
+    left: 44px;
+    top: 65px;
+    
+    background: #0E042B;
+    border-radius: 100px;
+}
+
+#who-won{
+    width: 552px;
+    height: 139px;
+    left: 588px;
+    background: #E9B839;
+    border-radius: 10px;   
+}
+
+#player{
+    width: 305px;
+    height: 69px;
+    left: 98px;
+    background: #2317B2;
+    border-radius: 10px;
+}
+
+#computer{
+    width: 305px;
+    height: 69px;
+    left: 1337px;
+    background: #B31717;
+    border-radius: 10px; 
+}
+
