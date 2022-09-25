@@ -9,10 +9,17 @@ h2{
 }
 
 #You-Win-Txt{
-    color: white;
+    color: black;
     font-size: xx-large;
+    padding-left: 90px;
     visibility: hidden; 
     /* Hiding the "You Win!" (h1) text, and will use javascript to manipulate it */
+}
+
+.You-Win-UI{
+    width: 305px;
+    background: #E9B839;
+    border-radius: 10px;
 }
 
 #Player-Txt{
