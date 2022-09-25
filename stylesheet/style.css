@@ -50,7 +50,7 @@ header{
 
 /* Game Board */
 .Player-Selected-Card{
-    background-color: blue;
+    background-color: gray;
     height: 300px;
     width: 200px;
     border-radius: 20px;
@@ -60,7 +60,7 @@ header{
 }
 
 .Computer-Selected-Card{
-    background-color: red;
+    background-color: gray;
     height: 300px;
     width: 200px;
     border-radius: 20px;
