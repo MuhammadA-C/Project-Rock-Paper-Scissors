@@ -1,9 +1,26 @@
+/* Background */
 body{
     background: #080317;
 }
 
+/* Header UI */
 h2{
     color: white;
+}
+
+#You-Win-Txt{
+    color: white;
+    font-size: xx-large;
+    visibility: hidden; 
+    /* Hiding the "You Win!" (h1) text, and will use javascript to manipulate it */
+}
+
+#Player-Txt{
+    padding-left: 35px;
+}
+
+#Computer-Txt{
+    padding-left: 175px;
 }
 
 header{
@@ -26,10 +43,12 @@ header{
 
 .Game-Board{
     display: flex;
-    justify-content: space-evenly;
     margin: 150px;
+    justify-content: center;
+
 }
 
+/* Game Board */
 .Player-Selected-Card{
     background-color: blue;
     height: 300px;
@@ -48,4 +67,42 @@ header{
     border-color: white;
     border-style: solid;
     border-width: 4px;
+}
+
+#VS{
+    color: gold;
+    font-size: xxx-large;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 120px;
+
+}
+
+/* Footer UI */
+.Cards{
+    display: flex;
+    justify-content: center;
+}
+
+#Rock{
+    background-color: blue;
+    height: 300px;
+    width: 200px;
+    border-radius: 20px;
+}
+
+#Paper{
+    background-color: blue;
+    height: 300px;
+    width: 200px;
+    border-radius: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#Scissors{
+    background-color: blue;
+    height: 300px;
+    width: 200px;
+    border-radius: 20px;
 }
