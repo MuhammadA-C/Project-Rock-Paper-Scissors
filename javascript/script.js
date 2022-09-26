@@ -12,6 +12,7 @@
            due to me putting the tie outcome as the else clause. 
 */
 
+
 let computerSelection; 
 const numOfRounds = 5;
 
@@ -133,3 +134,9 @@ function whoWonTheGame(wins, loses){
         console.log("You Tied!");
     }
 }
+
+//DOM constant variables for cards to select from, (rock, paper, or scissors)
+const cardSelectedRock = document.getElementById("Rock");
+const cardSelectedPaper = document.getElementById("Paper");
+const cardSelectedScissors = document.getElementById("Scissors");
+
